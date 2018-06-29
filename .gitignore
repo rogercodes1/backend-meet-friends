@@ -12,6 +12,8 @@
 /tmp/*
 !/log/.keep
 !/tmp/.keep
+#JWT Secret
+.env
 
 # Ignore uploaded files in development
 /storage/*
