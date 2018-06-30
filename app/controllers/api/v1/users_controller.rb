@@ -12,10 +12,9 @@ class Api::V1::UsersController < ApplicationController
     @user = User.new(get_params)
     @user.email = params[:email]
     @user.password = params[:password]
-    byebug
+
     if (@user.save)
       payload = {
-
          email: @user.email,
          id: @user.id
        }
@@ -40,11 +39,10 @@ class Api::V1::UsersController < ApplicationController
   end
 
 
-
   private
 
   def get_params
-    params.permit(:first_name, :last_name, :email, :password, :phone)
+    params.permit(:first_name, :last_name, :email, :password, :birthday, :gender,)
 
   end
 end

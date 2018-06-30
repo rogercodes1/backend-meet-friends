@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   get 'sessions/index'
-  get 'sessions/create'
+  post '/sessions/', to: 'sessions#create'
   get 'sessions/show'
   namespace :api do
     namespace :v1 do
