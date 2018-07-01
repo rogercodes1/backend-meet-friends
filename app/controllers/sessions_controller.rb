@@ -5,11 +5,7 @@ class SessionsController < ApplicationController
      @user = User.find_by(email: params["email"])
 
      if (@user && @user.authenticate(params["password"]))
-       payload = {
-         email: @user.email,
-         id: @user.id
-       }
-       token = JWT.encode payload, get_secret(), 'HS256'
+       token = generate_token
 
         render json: {
            email: @user.email,
@@ -18,12 +14,11 @@ class SessionsController < ApplicationController
          }
        else
         render json:{
-           errors: "Credentials are incorrect, Try again."
+           errors: "Login credentials are incorrect, Try again."
         }, status: :unauthorized
      end
   end
 
-  def destroy
-  end
+
 
 end
