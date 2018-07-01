@@ -14,8 +14,9 @@ class SessionsController < ApplicationController
          }
        else
         render json:{
-           errors: "Login credentials are incorrect, Try again."
-        }, status: :unauthorized
+           errors: "Login credentials are incorrect, Try again.",
+           status: :unauthorized
+        }
      end
   end
 

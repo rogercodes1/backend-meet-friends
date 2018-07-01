@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
     def generate_token
     # We will make a token here!
     payload = {
-      username: @user.username,
+      email: @user.email,
       id: @user.id
     }
 
