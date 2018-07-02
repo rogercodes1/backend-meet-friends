@@ -10,10 +10,11 @@ class SessionsController < ApplicationController
         render json: {
            email: @user.email,
            id: @user.id,
-           token: token
+           token: token,
+           status: :accepted
          }
-       else
-        render json:{
+      else
+        render json: {
            errors: "Login credentials are incorrect, Try again.",
            status: :unauthorized
         }

@@ -1,4 +1,11 @@
 Rails.application.routes.draw do
+  namespace :api do
+    namespace :v1 do
+      get 'places/index'
+      get 'places/create'
+      get 'places/show'
+    end
+  end
   get 'sessions/index'
   post '/sessions/', to: 'sessions#create'
   get 'sessions/show'
