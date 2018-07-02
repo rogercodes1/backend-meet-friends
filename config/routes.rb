@@ -1,17 +1,13 @@
 Rails.application.routes.draw do
-  namespace :api do
-    namespace :v1 do
-      get 'places/index'
-      get 'places/create'
-      get 'places/show'
-    end
-  end
+
   get 'sessions/index'
   post '/sessions/', to: 'sessions#create'
   get 'sessions/show'
   namespace :api do
     namespace :v1 do
       resources :users, only:[:index, :create, :show, :edit]
+      get "/places/yelp"
+      resources :places, only: [:index, :create, :show, :edit]
       resources :events, only:[:index, :create, :show, :edit]
       resources :comments, only:[:index, :create, :show, :edit]
       resources :messages, only:[:index, :create, :show, :edit]

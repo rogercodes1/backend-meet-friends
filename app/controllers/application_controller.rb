@@ -4,6 +4,10 @@ class ApplicationController < ActionController::Base
     def get_secret
       ENV['JWT_SECRET']
     end
+    def yelp_secret
+      ENV['YELP_API_KEY']
+
+    end
 
     def generate_token
     # We will make a token here!
