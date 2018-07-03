@@ -18,7 +18,7 @@ class Api::V1::UsersController < ApplicationController
          email: @user.email,
          id: @user.id
        }
-      token = JWT.encode payload, get_secret(), 'HS256'
+      token = get_token
 
       render json: {
         message: "You have been registed",
