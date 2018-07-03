@@ -7,7 +7,7 @@ SEARCH_PATH = "/v3/businesses/search"
 BUSINESS_PATH = "/v3/businesses/"
 
 DEFAULT_BUSINESS_ID = "yelp-san-francisco"
-DEFAULT_TERM = "ramen"
+DEFAULT_TERM = "bar"
 DEFAULT_LOCATION = "10004"
 SEARCH_LIMIT = 20
 
@@ -34,7 +34,7 @@ SEARCH_LIMIT = 20
     results = response.parse
     # byebug
     render json:{
-      results: results,
+    results: results,
       status: :accepted
     }
 
