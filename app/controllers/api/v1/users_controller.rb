@@ -8,18 +8,15 @@ class Api::V1::UsersController < ApplicationController
   end
 
   def create
-
     @user = User.new(get_params)
     @user.email = params[:email]
     @user.password = params[:password]
-
     if (@user.save)
       payload = {
          email: @user.email,
          id: @user.id
        }
       token = get_token
-
       render json: {
         message: "You have been registed",
         token: token,
@@ -30,12 +27,13 @@ class Api::V1::UsersController < ApplicationController
          errors: @user.errors.full_messages},
          status: :unprocessable_entity
     end
+
   end
 
 
   def show
     @user = User.find(params[:id])
-    render json: @user, include: :transactions
+    render json: @user, include: :events
   end
 
 

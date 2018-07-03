@@ -15,19 +15,21 @@ class ApplicationController < ActionController::Base
       email: @user.email,
       id: @user.id
     }
-
     # IMPORTANT: set nil as password parameter
-    JWT.encode payload, get_secret(), 'HS256'
+    JWT.encode payload, get_secret, 'HS256'
     end
 
    def get_token
+     byebug
       request.headers['Authorization']
    end
 
    def get_decoded_token
      token = get_token()
+     byebug
       begin
-         decoded_token = JWT.decode token, get_secret, true, algorithm: 'HS256'
+         decoded_token = JWT.decode token, get_secret(), true, {algorithm: 'HS256'}
+         byebug
       rescue JWT::DecodeError
          nil
       end
@@ -49,7 +51,7 @@ class ApplicationController < ActionController::Base
   def requires_user_match
 
     @user = User.find(params[:id])
-
+    byebug
     if @user.id != get_decoded_token[0]["id"]
       byebug
       render json:{
