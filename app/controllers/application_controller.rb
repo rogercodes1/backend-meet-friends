@@ -16,20 +16,17 @@ class ApplicationController < ActionController::Base
       id: @user.id
     }
     # IMPORTANT: set nil as password parameter
-    JWT.encode payload, get_secret, 'HS256'
+    JWT.encode payload, get_secret(), 'HS256'
     end
 
    def get_token
-     byebug
       request.headers['Authorization']
    end
 
    def get_decoded_token
      token = get_token()
-     byebug
       begin
          decoded_token = JWT.decode token, get_secret(), true, {algorithm: 'HS256'}
-         byebug
       rescue JWT::DecodeError
          nil
       end

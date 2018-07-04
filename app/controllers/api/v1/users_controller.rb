@@ -8,19 +8,18 @@ class Api::V1::UsersController < ApplicationController
   end
 
   def create
+    byebug
     @user = User.new(get_params)
     @user.email = params[:email]
     @user.password = params[:password]
     if (@user.save)
-      payload = {
-         email: @user.email,
-         id: @user.id
-       }
-      token = get_token
+      token = generate_token
+      
       render json: {
         message: "You have been registed",
         token: token,
-        id: @user.id
+        id: @user.id,
+        status: :accepted
         }
     else
       render json: {
