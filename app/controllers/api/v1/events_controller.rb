@@ -27,7 +27,7 @@ class Api::V1::EventsController < ApplicationController
 
   def edit
   end
-
+  
   private
   def event_params
     params.permit(
