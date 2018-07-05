@@ -7,7 +7,10 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :users, only:[:index, :create, :show, :edit]
       get "/places/yelp"
+      post "/places/yelpPost", to: "places#yelpPost"
       resources :places, only: [:index, :create, :show, :edit]
+
+      # post "/places/yelpPost"
       resources :events, only:[:index, :create, :show, :edit]
       resources :comments, only:[:index, :create, :show, :edit]
       resources :messages, only:[:index, :create, :show, :edit]
