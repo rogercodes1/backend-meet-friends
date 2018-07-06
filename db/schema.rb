@@ -17,6 +17,7 @@ ActiveRecord::Schema.define(version: 2018_07_02_143522) do
 
   create_table "comments", force: :cascade do |t|
     t.integer "event_id", null: false
+    t.integer "user_id"
     t.string "comment", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -24,23 +25,26 @@ ActiveRecord::Schema.define(version: 2018_07_02_143522) do
 
   create_table "events", force: :cascade do |t|
     t.string "event_name", null: false
-    t.string "location_name", null: false
-    t.string "address", null: false
     t.string "description", null: false
     t.date "date", null: false
     t.string "time", null: false
     t.float "duration", null: false
-    t.integer "friends", default: 3, null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer "host_id", null: false
+    t.integer "friends", default: 2, null: false
+    t.integer "host_id"
+    t.string "location_name", null: false
+    t.string "address", null: false
+    t.string "yelp_image"
     t.string "yelp_url"
     t.string "maps_link"
-    t.string "yelp_image"
+    t.string "lat"
+    t.string "lon"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "messages", force: :cascade do |t|
     t.integer "event_id", null: false
+    t.integer "user_id"
     t.string "message", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -64,10 +68,13 @@ ActiveRecord::Schema.define(version: 2018_07_02_143522) do
   create_table "users", force: :cascade do |t|
     t.string "first_name", null: false
     t.string "last_name", null: false
+    t.string "initials"
     t.string "email", null: false
     t.string "password_digest", null: false
     t.date "birthday", null: false
     t.string "gender", null: false
+    t.string "avatar"
+    t.string "home_base"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

@@ -1,5 +1,5 @@
 class CommentSerializer < ActiveModel::Serializer
-  attributes :id, :comment, :event_id
+  attributes :id, :comment, :event_id, :user_id
 
   belongs_to :event
 
