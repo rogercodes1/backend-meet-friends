@@ -34,6 +34,15 @@ class Api::V1::UsersController < ApplicationController
     render json: @user, include: :events
   end
 
+  def non_user_events
+    @user = User.find(params[:id])
+    @user_events = UserEvent.all
+    @events = Event.all 
+    byebug
+
+
+  end
+
 
   private
 

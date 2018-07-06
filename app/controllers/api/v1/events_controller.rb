@@ -1,5 +1,6 @@
 class Api::V1::EventsController < ApplicationController
   def index
+  
     render json: Event.all
   end
 
@@ -27,7 +28,7 @@ class Api::V1::EventsController < ApplicationController
 
   def edit
   end
-  
+
   private
   def event_params
     params.permit(
