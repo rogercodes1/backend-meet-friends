@@ -9,9 +9,11 @@ class Api::V1::UsersController < ApplicationController
 
   def create
     @user = User.new(get_params)
+    @verify_user = User.find_by(email: params[:email])
     @user.email = params[:email]
     @user.password = params[:password]
-    if (@user.save)
+
+    if (@verify_user === nil && @user.save )
       token = generate_token
 
       render json: {
@@ -20,10 +22,18 @@ class Api::V1::UsersController < ApplicationController
         id: @user.id,
         status: :accepted
         }
+    elsif (@verify_user.valid?)
+      render json: {
+         errors: @user.errors.full_messages,
+         status: :conflict}
+
+
     else
       render json: {
-         errors: @user.errors.full_messages},
+         errors: @user.errors.full_messages,
          status: :unprocessable_entity
+       }
+
     end
 
   end
@@ -37,7 +47,7 @@ class Api::V1::UsersController < ApplicationController
   def non_user_events
     @user = User.find(params[:id])
     @user_events = UserEvent.all
-    @events = Event.all 
+    @events = Event.all
     byebug
 
 

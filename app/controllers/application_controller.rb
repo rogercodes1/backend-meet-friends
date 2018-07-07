@@ -58,6 +58,10 @@ class ApplicationController < ActionController::Base
 
   end
 
+  def user_details(user)
+    
+  end
+
 
 
 end

@@ -1,7 +1,9 @@
 class Api::V1::EventsController < ApplicationController
+
   def index
-  
+    @events = Event.all
     render json: Event.all
+
   end
 
   def create
@@ -24,9 +26,24 @@ class Api::V1::EventsController < ApplicationController
   end
 
   def show
+    @event = Event.find(params[:id])
+    render json: @event, include: :users
   end
 
   def edit
+  end
+
+  def nearby
+    event_ids = UserEvent.where(user_id: params[:id]).pluck(:event_id)
+    if event_ids === []
+      render json: Event.all
+    else
+      @nearby_events = Event.all.select do |event|
+        event if !event_ids.include?(event.id)
+       end
+      render json: @nearby_events
+    end
+
   end
 
   private

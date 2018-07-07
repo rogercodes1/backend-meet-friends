@@ -11,7 +11,7 @@ Rails.application.routes.draw do
       resources :yelp_places, only:[:index]
       resources :users, only:[:index, :create, :show, :edit]
 
-      # post "/places/yelpPost"
+      get "/events/nearby"
       resources :events, only:[:index, :create, :show, :edit]
       resources :comments, only:[:index, :create, :show, :edit]
       resources :messages, only:[:index, :create, :show, :edit]
