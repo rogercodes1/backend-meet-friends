@@ -26,8 +26,10 @@ class Api::V1::EventsController < ApplicationController
   end
 
   def show
+    byebug
     @event = Event.find(params[:id])
-    render json: @event, include: :users
+    render json: @event
+    # , include: :users
   end
 
   def edit
@@ -35,6 +37,7 @@ class Api::V1::EventsController < ApplicationController
 
   def nearby
     event_ids = UserEvent.where(user_id: params[:id]).pluck(:event_id)
+
     if event_ids === []
       render json: Event.all
     else
