@@ -49,6 +49,5 @@ class Api::V1::UsersController < ApplicationController
 
   def get_params
     params.permit(:first_name, :last_name, :email, :password, :birthday, :gender,)
-
   end
 end

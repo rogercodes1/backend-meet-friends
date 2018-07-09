@@ -26,13 +26,31 @@ class Api::V1::EventsController < ApplicationController
   end
 
   def show
-    byebug
     @event = Event.find(params[:id])
     render json: @event
     # , include: :users
   end
 
   def edit
+  end
+
+  def join_event
+    @joined = UserEvent.find_or_create_by(join_params)
+    if (@joined.valid?)
+      byebug #need to check if I can jsut pass @joined
+      render json:{
+        success: @joined,
+        status: :accepted,
+      }
+    else
+      byebug
+      render json: {
+         errors: @user.errors.full_messages,
+         status: :unprocessable_entity
+       }
+    end
+
+
   end
 
   def nearby
@@ -65,5 +83,9 @@ class Api::V1::EventsController < ApplicationController
       :maps_link,
       :yelp_image,)
 
+  end
+
+  def join_params
+    params.permit(:event_id, :user_id)
   end
 end
