@@ -3,9 +3,8 @@ class SessionsController < ApplicationController
     @user = User.find_by(email: params['email'])
     if @user && @user.authenticate(params['password'])
       token = generate_token
-
       render json: {
-        email: @user.email,
+        events:@user.events,
         id: @user.id,
         token: token,
         status: :accepted
