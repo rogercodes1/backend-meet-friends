@@ -58,8 +58,16 @@ class ApplicationController < ActionController::Base
 
   end
 
-  def user_details(user)
-    
+  def nearby_events(user_id)
+    event_ids = UserEvent.where(user_id: user_id).pluck(:event_id)
+    if event_ids === []
+      []
+    else
+      @nearby_events = Event.all.select do |event|
+        event if !event_ids.include?(event.id)
+       end
+      @nearby_events
+    end
   end
 
 

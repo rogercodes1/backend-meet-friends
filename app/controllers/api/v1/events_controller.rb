@@ -37,13 +37,17 @@ class Api::V1::EventsController < ApplicationController
   def join_event
     @joined = UserEvent.find_or_create_by(join_params)
     if (@joined.valid?)
+      # @event = Event.find(@joined.event_id)
+      user = User.find(@joined.user_id)
+      other_events = nearby_events(user.id)
+
       byebug #need to check if I can jsut pass @joined
       render json:{
-        success: @joined,
+        data: user.events,
+        nearby: other_events,
         status: :accepted,
       }
     else
-      byebug
       render json: {
          errors: @user.errors.full_messages,
          status: :unprocessable_entity
