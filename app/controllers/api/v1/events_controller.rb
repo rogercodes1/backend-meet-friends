@@ -71,23 +71,29 @@ class Api::V1::EventsController < ApplicationController
 
   end
 
-  private
-  def event_params
-    params.permit(
-      :event_name,
-      :location_name,
-      :address,
-      :description,
-      :date,
-      :time,
-      :duration,
-      :friends,
-      :host_id,
-      :yelp_url,
-      :maps_link,
-      :yelp_image,)
-
+  def event_comments
+    byebug
   end
+
+private
+
+  def event_params
+  params.permit(
+    :event_name,
+    :location_name,
+    :address,
+    :description,
+    :date,
+    :time,
+    :duration,
+    :friends,
+    :host_id,
+    :yelp_url,
+    :maps_link,
+    :yelp_image
+  )
+  end
+
 
   def join_params
     params.permit(:event_id, :user_id)
