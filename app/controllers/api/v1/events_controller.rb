@@ -73,7 +73,7 @@ class Api::V1::EventsController < ApplicationController
   def comments
     @event = Event.find(params[:id])
 
-    render json: @event.comments
+    render json: @event
   end
 
 private
