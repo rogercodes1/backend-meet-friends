@@ -25,11 +25,11 @@ class Api::V1::EventsController < ApplicationController
     end
   end
 
-  def show
-    @event = Event.find(params[:id])
-    render json: @event
-    # , include: :users
-  end
+  # def show
+  #   @event = Event.find(params[:id])
+  #   render json: @event
+  #   # , include: :users
+  # end
 
   def edit
   end
@@ -41,7 +41,6 @@ class Api::V1::EventsController < ApplicationController
       user = User.find(@joined.user_id)
       other_events = nearby_events(user.id)
 
-      byebug #need to check if I can jsut pass @joined
       render json:{
         data: user.events,
         nearby: other_events,
@@ -71,8 +70,10 @@ class Api::V1::EventsController < ApplicationController
 
   end
 
-  def event_comments
-    byebug
+  def comments
+    @event = Event.find(params[:id])
+
+    render json: @event.comments
   end
 
 private
