@@ -14,7 +14,7 @@ Rails.application.routes.draw do
       get "/events/nearby"
       post "events/join_event"
       get '/events/comments'
-      resources :events, only:[:index, :create, :edit]
+      resources :events, only:[:index,:show, :create, :edit]
       resources :comments, only:[:index, :create, :show, :edit]
       resources :messages, only:[:index, :create, :show, :edit]
       # resources :, only:[:index, :create, :show, :edit]

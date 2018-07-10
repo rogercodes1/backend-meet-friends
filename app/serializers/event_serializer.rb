@@ -13,7 +13,9 @@ class EventSerializer < ActiveModel::Serializer
   :maps_link,
   :yelp_image,
   :lat,
-  :lon
+  :lon,
+  :comments,
+  :users
 
   has_many :user_events
   has_many :users, through: :user_events
