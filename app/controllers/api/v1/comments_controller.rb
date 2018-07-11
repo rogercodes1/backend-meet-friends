@@ -8,10 +8,8 @@ class Api::V1::CommentsController < ApplicationController
   def create
 
     @comment = Comment.new(comment_params)
-
     if @comment.save
-      @event = Event.find(@comment.id)
-      # byebug
+      @event = Event.find(@comment.event_id)
       render json: {
         data: @event,
         comments: @event.comments,

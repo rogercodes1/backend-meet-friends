@@ -73,7 +73,6 @@ class Api::V1::EventsController < ApplicationController
     #Need full event with nested comments
     # data so they be used on frontEnd
     @event = Event.find(params[:id])
-
     render json: @event
   end
 
