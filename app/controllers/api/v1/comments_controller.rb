@@ -6,13 +6,14 @@ class Api::V1::CommentsController < ApplicationController
   end
 
   def create
-    byebug
-    @comment =Comment.new(comment_params)
-    byebug
+
+    @comment = Comment.new(comment_params)
+
     if @comment.save
       @event = Event.find(@comment.id)
-      byebug
+      # byebug
       render json: {
+        data: @event,
         comments: @event.comments,
         status: :success
       }
