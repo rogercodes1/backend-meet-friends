@@ -7,10 +7,11 @@ class Api::V1::EventsController < ApplicationController
   end
 
   def create
+    byebug
     @event = Event.new(event_params)
     @event.save
     @user_event = UserEvent.new(user_id: params[:host_id],event_id: @event.id )
-
+    byebug
     if (@user_event.save)
       render json: {
         message: "event successfully created",
@@ -91,7 +92,9 @@ private
     :host_id,
     :yelp_url,
     :maps_link,
-    :yelp_image
+    :yelp_image,
+    :lat,
+    :lon,
   )
   end
 
