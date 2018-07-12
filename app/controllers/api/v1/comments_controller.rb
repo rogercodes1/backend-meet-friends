@@ -1,12 +1,9 @@
 class Api::V1::CommentsController < ApplicationController
   def index
-    @comments = Comment.all
-
-    render json: @comments
+    render json: Comment.all
   end
 
   def create
-
     @comment = Comment.new(comment_params)
     if @comment.save
       @event = Event.find(@comment.event_id)
