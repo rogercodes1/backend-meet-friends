@@ -86,6 +86,8 @@ private
     :address,
     :description,
     :date,
+    :lat,
+    :lon,
     :time,
     :duration,
     :friends,
