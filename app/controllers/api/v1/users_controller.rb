@@ -8,6 +8,7 @@ class Api::V1::UsersController < ApplicationController
   end
 
   def create
+    puts "#{params}"
     @user = User.new(get_params)
     @verify_user = User.find_by(email: params[:email])
     @user.email = params[:email]
