@@ -13,10 +13,8 @@ class Api::V1::UsersController < ApplicationController
     @user.email = params[:email]
     @user.password = params[:password]
     # if (@verify_user === nil && @user.save )
-    byebug
     if (@user.save)
       token = generate_token
-      byebug
       render json: {
         message: "You have been registed",
         token: token,
