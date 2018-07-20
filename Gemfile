@@ -20,6 +20,7 @@ gem 'puma', '~> 3.11'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+gem "rails_12factor"
 gem 'jwt'
 gem 'bcrypt', '~> 3.1.7'
 gem 'rest-client', '~> 2.0', '>= 2.0.2'
