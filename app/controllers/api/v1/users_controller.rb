@@ -16,7 +16,7 @@ class Api::V1::UsersController < ApplicationController
     byebug
     if (@user.save)
       token = generate_token
-
+      byebug
       render json: {
         message: "You have been registed",
         token: token,
