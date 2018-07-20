@@ -20,6 +20,8 @@ class ApplicationController < ActionController::Base
     end
 
    def get_token
+     puts "request #{request.headers['Authorization']}"
+     byebug
       request.headers['Authorization']
    end
 
