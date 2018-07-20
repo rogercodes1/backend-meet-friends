@@ -12,8 +12,8 @@ class Api::V1::UsersController < ApplicationController
     @verify_user = User.find_by(email: params[:email])
     @user.email = params[:email]
     @user.password = params[:password]
-    # if (@verify_user === nil && @user.save )
-    if (@user.save)
+    # if (@user.save)
+    if (@verify_user === nil && @user.save )
       token = generate_token
       render json: {
         message: "You have been registed",
