@@ -14,7 +14,7 @@ class Api::V1::UsersController < ApplicationController
     @user.password = params[:password]
     # if (@verify_user === nil && @user.save )
     byebug
-    if (@user.save )
+    if (@user.save)
       token = generate_token
 
       render json: {
@@ -25,7 +25,7 @@ class Api::V1::UsersController < ApplicationController
         }
     elsif (@verify_user.valid?)
       render json: {
-        message: "You already have an account"
+        message: "You already have an account",
          errors: @user.errors.full_messages,
          verify: @verify_user,
          status: :conflict}
