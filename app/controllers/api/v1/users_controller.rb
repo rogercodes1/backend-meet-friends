@@ -25,6 +25,7 @@ class Api::V1::UsersController < ApplicationController
     elsif (@verify_user.valid?)
       render json: {
          errors: @user.errors.full_messages,
+         verify: @verify_user,
          status: :conflict}
     else
       render json: {
