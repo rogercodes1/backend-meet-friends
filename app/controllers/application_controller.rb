@@ -1,14 +1,15 @@
 class ApplicationController < ActionController::Base
-   # protect_from_forgery with: :null_session
-   skip_before_action :verify_authenticity_token
+   protect_from_forgery with: :null_session
+   # skip_before_action :verify_authenticity_token
 
-    def get_secret
+  def get_secret
       ENV['JWT_SECRET']
-    end
-    def yelp_secret
+  end
+
+  def yelp_secret
       ENV['YELP_API_KEY']
 
-    end
+  end
 
     def generate_token
     # We will make a token here!

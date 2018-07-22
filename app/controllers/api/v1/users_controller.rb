@@ -9,13 +9,16 @@ class Api::V1::UsersController < ApplicationController
 
   def create
     puts "#{params}"
+    byebug
     @user = User.new(get_params)
     @verify_user = User.find_by(email: params[:email])
     @user.email = params[:email]
     @user.password = params[:password]
     # if (@user.save)
+    byebug
     if (@verify_user === nil && @user.save )
       token = generate_token
+      byebug
       render json: {
         message: "You have been registed",
         token: token,
@@ -48,6 +51,6 @@ class Api::V1::UsersController < ApplicationController
   private
 
   def get_params
-    params.permit(:first_name, :last_name, :email, :password, :birthday, :gender)
+    params.permit(:first_name, :last_name, :email, :password, :birthday, :gender, :avatar)
   end
 end
