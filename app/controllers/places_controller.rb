@@ -22,7 +22,6 @@ SEARCH_LIMIT = 20
       limit: data["limit"],
       radius: data["radius"]
       }
-      byebug
       response = HTTP.auth(yelp_secret).get(url, params: params)
       results = response.parse
       render json:{
