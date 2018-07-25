@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
   end
 
   def yelp_secret
-      ENV['YELP_API_KEY']
+      'Bearer '+ ENV['YELP_API_KEY']
 
   end
 

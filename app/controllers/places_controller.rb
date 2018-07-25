@@ -22,7 +22,8 @@ SEARCH_LIMIT = 20
       limit: data["limit"],
       radius: data["radius"]
       }
-      response = HTTP.auth(ENV['YELP_API_KEY']).get(url, params: params)
+      byebug
+      response = HTTP.auth(yelp_secret).get(url, params: params)
       results = response.parse
       render json:{
       results: results,
@@ -40,7 +41,7 @@ SEARCH_LIMIT = 20
     limit: SEARCH_LIMIT
     }
     # byebug
-    response = HTTP.auth(ENV['YELP_API_KEY']).get(url, params: params)
+    response = HTTP.auth(yelp_secret).get(url, params: params)
     results = response.parse
     # byebug
     render json:{
@@ -51,42 +52,6 @@ SEARCH_LIMIT = 20
 
   def show
   end
-# (term = DEFAULT_TERM, location = DEFAULT_LOCATION)
-  # def yelp(term = DEFAULT_TERM, location = DEFAULT_LOCATION)
-  #   url = "#{API_HOST}#{SEARCH_PATH}"
-  #   params = {
-  #   term: term,
-  #   location: location,
-  #   limit: SEARCH_LIMIT
-  #   }
-  #   response = HTTP.auth(ENV['YELP_API_KEY']).get(url, params: params)
-  #   results = response.parse
-  #   render json:{
-  #   results: results,
-  #     status: :accepted
-  #   }
-  #
-  # end
-
-  # def yelpPost
-  #   debugger
-  #   url = "#{API_HOST}#{SEARCH_PATH}"
-  #   byebug
-  #   params = {
-  #   term: "restaurants",
-  #   location: "10004",
-  #   limit: SEARCH_LIMIT
-  #   }
-  #   # byebug
-  #   response = HTTP.auth(ENV['YELP_API_KEY']).get(url, params: params)
-  #   results = response.parse
-  #     # byebug
-  #   render json:{
-  #   results: results,
-  #     status: :accepted
-  #   }
-  #
-  # end
 
 
 end
