@@ -8,14 +8,11 @@ class Api::V1::UsersController < ApplicationController
   end
 
   def create
-    puts "#{params}"
-    byebug
     @user = User.new(get_params)
     @verify_user = User.find_by(email: params[:email])
     @user.email = params[:email]
     @user.password = params[:password]
     # if (@user.save)
-    byebug
     if (@verify_user === nil && @user.save )
       token = generate_token
       byebug
