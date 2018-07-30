@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
    protect_from_forgery with: :null_session
-   
+
    # skip_before_action :verify_authenticity_token
 
   def get_secret
@@ -23,7 +23,6 @@ class ApplicationController < ActionController::Base
 
    def get_token
      puts "request #{request.headers['Authorization']}"
-     byebug
       request.headers['Authorization']
    end
 

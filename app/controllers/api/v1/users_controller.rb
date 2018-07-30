@@ -41,6 +41,11 @@ class Api::V1::UsersController < ApplicationController
     # byebug
     render json: @user, include: [:events, :comments]
   end
+  def edit
+    @user = User.find(params[:id])
+    # byebug
+    render json: @user, include: [:events, :comments]
+  end
 
 
   private
