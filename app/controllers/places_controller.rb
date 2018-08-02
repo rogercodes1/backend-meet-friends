@@ -7,7 +7,6 @@ API_HOST = "https://api.yelp.com"
 SEARCH_PATH = "/v3/businesses/search"
 BUSINESS_PATH = "/v3/businesses/"
 
-DEFAULT_BUSINESS_ID = "yelp-san-francisco"
 DEFAULT_TERM = "restaurants"
 DEFAULT_LOCATION = "10004"
 SEARCH_LIMIT = 20
