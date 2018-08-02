@@ -28,8 +28,6 @@ SEARCH_LIMIT = 20
       results: results,
         status: :accepted
       }
-
-
   end
 
   def create
@@ -39,10 +37,8 @@ SEARCH_LIMIT = 20
     location: params["location"],
     limit: SEARCH_LIMIT
     }
-    # byebug
     response = HTTP.auth(yelp_secret).get(url, params: params)
     results = response.parse
-    # byebug
     render json:{
     results: results,
       status: :accepted
