@@ -1,4 +1,5 @@
 class SessionsController < ApplicationController
+
   def create
    puts "#{params}"
     @user = User.find_by(email: params['email'])
