@@ -1,7 +1,7 @@
 class Api::V1::UsersController < ApplicationController
   # before_action :requires_login, only: [:index]
   # before_action :requires_user_match, only: [:show]
-  
+
   def index
     @users = User.all
     render json: @users
@@ -39,12 +39,10 @@ class Api::V1::UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    # byebug
     render json: @user, include: [:events, :comments]
   end
   def edit
     @user = User.find(params[:id])
-    # byebug
     render json: @user, include: [:events, :comments]
   end
 
